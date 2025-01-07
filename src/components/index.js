@@ -43,17 +43,16 @@ const handleProfileFormSubmit = (evt) => {
 const handleNewCardFormSubmit = (evt) => {
     evt.preventDefault();
     placesWrap.prepend(
-        createCardElement(
-            {
+        createCardElement({
             name: newCardNameInput.value,
             link: newCardLinkInput.value,
             },
             {
-                onPreviewImage: handlePreviewImage,
-                onLikeIcon: handleLikeIcon,
-                onDelete: handleDeleteCard,
+            onPreviewImage: handlePreviewImage,
+            onLikeIcon: handleLikeIcon,
+            onDelete: handleDeleteCard,
             }
-            )
+        )
     );
 
     closeModal(newCardModal);
