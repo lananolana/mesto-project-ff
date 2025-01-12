@@ -40,5 +40,6 @@ npm run build
 npm run deploy
 ```
 
-### Live Demo
-Mesto Project Live
+## Live Demo
+
+[Mesto Project Live](https://lananolana.github.io/mesto-project-ff/)
