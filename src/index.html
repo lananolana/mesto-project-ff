@@ -60,6 +60,7 @@
             <input
                     type="text"
                     name="description"
+                    id="description-input"
                     class="popup__input popup__input_type_description"
                     placeholder="Занятие"
                     required
@@ -68,7 +69,7 @@
                     pattern="^[A-Za-zА-ЯЁа-яё\- ]+$"
                     data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             >
-            <span class="popup__input_type_error description-input-error"></span>
+            <span class="popup__input-error description-input-error"></span>
           </label>
           <button type="submit" class="button popup__button">Сохранить</button>
         </fieldset>
