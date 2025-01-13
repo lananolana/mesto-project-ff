@@ -3,6 +3,19 @@ import '../pages/index.css';
 import { initialCards } from './cards.js';
 import { createCardElement, handleDeleteCard, handleLikeIcon } from './card.js';
 import { openModal, closeModal, setCloseModalEventListeners } from './modal.js'
+import { enableValidation, clearValidation } from "./validation";
+const formValidationConfig = {
+    formSelector: '.popup__form',
+    fieldsetSelector: '.popup__set',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input-type-error',
+    errorClass: 'popup__input-error_visible'
+}
+
+// let userId = null;
+// let submitFormConfirm = () => {};
 
 const placesWrap = document.querySelector('.places__list');
 
@@ -82,3 +95,4 @@ initialCards.forEach(data => {
 setCloseModalEventListeners(newCardModal);
 setCloseModalEventListeners(profileModal);
 setCloseModalEventListeners(imageModal);
+enableValidation(formValidationConfig);
