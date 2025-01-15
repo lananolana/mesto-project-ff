@@ -7,9 +7,9 @@ An interactive web app for sharing and managing photos. Users can add, like, and
 
 ## Key Features
 
-- Dynamic photo cards: add, like, and delete functionality.
-- Form validation and API integration.
-- Fully responsive design.
+- Dynamic photo cards: add, like, and delete functionality
+- Form validation and API integration
+- Fully responsive design
 
 ## Skills & Technologies
 
