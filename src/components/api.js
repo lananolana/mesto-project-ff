@@ -1,26 +1,26 @@
 const config = {
-    baseUrl: 'https://nomoreparties.co/v1/',
+    baseUrl: 'https://nomoreparties.co/v1/cohort-mag-4',
     headers: {
-        authorization: '',
+        authorization: '1945e5a3-b0fe-453e-a642-aa277741f9f6',
         'Content-Type': 'application/json'
     }
 };
 
-const getResponseData = (res) => {
+const checkResponse = (res) => {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 };
 
 export const getInitialCards = () => {
     return fetch(`${config.baseUrl}/cards`, {
         headers: config.headers,
-    }).then(getResponseData);
+    }).then(checkResponse);
 };
 
 export const getUserInfo = () => {
     return fetch(`${config.baseUrl}/users/me`, {
         method: 'GET',
         headers: config.headers,
-    }).then(getResponseData);
+    }).then(checkResponse);
 };
 
 export const addNewCard = ({ name, link }) => {
@@ -31,7 +31,7 @@ export const addNewCard = ({ name, link }) => {
             name,
             link,
         }),
-    }).then(getResponseData);
+    }).then(checkResponse);
 };
 
 export const setUserInfo = ({ name, about }) => {
@@ -42,14 +42,14 @@ export const setUserInfo = ({ name, about }) => {
             name,
             about,
         }),
-    }).then(getResponseData);
+    }).then(checkResponse);
 };
 
 export const removeCard = (cardID) => {
     return fetch(`${config.baseUrl}/cards/${cardID}`, {
         method: 'DELETE',
         headers: config.headers,
-    }).then(getResponseData);
+    }).then(checkResponse);
 };
 
 export const setUserAvatar = ({ avatar }) => {
@@ -59,12 +59,12 @@ export const setUserAvatar = ({ avatar }) => {
         body: JSON.stringify({
             avatar,
         }),
-    }).then(getResponseData);
+    }).then(checkResponse);
 };
 
 export const changeLikeStatus = (cardID, like) => {
-    return fetch(`${config.baseUrl}/cards/like/${cardID}`, {
+    return fetch(`${config.baseUrl}/cards/likes/${cardID}`, {
         method: like ? 'PUT' : 'DELETE',
         headers: config.headers,
-    }).then(getResponseData);
+    }).then(checkResponse);
 };

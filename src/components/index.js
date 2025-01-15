@@ -62,7 +62,7 @@ const editProfileButton = document.querySelector('.profile__edit-button');
 // Profile info
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
-const profileAvatar = document.querySelector('.profile__image-container');
+const profileAvatar = document.querySelector('.profile__image');
 
 
 const handlePreviewImage = ({ name, link }) => {
@@ -133,7 +133,7 @@ const handleNewCardFormSubmit = (evt) => {
             clearValidation(newCardForm, formValidationConfig);
         })
         .catch((err) => {
-            console.error(err);
+            console.log(err);
         })
         .finally(() => {
             newCardSubmitButton.textContent = "Создать";
@@ -166,7 +166,11 @@ cardDeleteModal.addEventListener('submit', (evt) => {
     submitFormConfirm();
 });
 
-addNewCardButton.addEventListener('click', () => {openModal(newCardModal)});
+addNewCardButton.addEventListener('click', () => {
+    clearValidation(newCardForm, formValidationConfig);
+    newCardForm.reset();
+    openModal(newCardModal)
+});
 editProfileButton.addEventListener('click', () => {
     clearValidation(profileForm, formValidationConfig);
     profileTitleInput.value = profileTitle.textContent;
@@ -174,6 +178,8 @@ editProfileButton.addEventListener('click', () => {
     openModal(profileModal);
 });
 profileAvatar.addEventListener('click', () => {
+    clearValidation(avatarForm, formValidationConfig);
+    avatarForm.reset();
     openModal(avatarModal);
 });
 
@@ -190,7 +196,7 @@ Promise.all([getInitialCards(), getUserInfo()])
         userId = userData._id;
         profileTitle.textContent = userData.name;
         profileDescription.textContent = userData.about;
-        profileAvatar.style.background = `url(${userData.avatar})`;
+        profileAvatar.style.backgroundImage = `url(${userData.avatar})`;
 
         cards.forEach((data) => {
             const cardElement = createCardElement(
@@ -203,8 +209,9 @@ Promise.all([getInitialCards(), getUserInfo()])
                 userId
             );
             placesWrap.prepend(cardElement);
+            console.log(cardElement);
         });
     })
     .catch((err) => {
-        console.error(err);
+        console.log(err);
     });
