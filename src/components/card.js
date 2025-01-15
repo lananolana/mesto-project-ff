@@ -9,7 +9,7 @@ export const handleLikeIcon = (cardID, likeButton, likesCount) => {
     changeLikeStatus(cardID, !isLiked)
         .then((cardData) => {
             likeButton.classList.toggle('card__like-button_is-active');
-            likesCount.textContent = cardData.liked.length;
+            likesCount.textContent = cardData.likes.length;
         })
         .catch((err) => {
             console.log(`Ошибка изменения статуса лайка: ${err}`);

@@ -2,7 +2,8 @@
 
 An interactive web app for sharing and managing photos. Users can add, like, and delete cards, edit profile, and preview images.
 
-https://github.com/lananolana/mesto-project-ff
+- Repo: https://github.com/lananolana/mesto-project-ff
+- Live demo: https://lananolana.github.io/mesto-project-ff/
 
 ## Key Features
 
@@ -39,7 +40,3 @@ npm run build
 ```bash
 npm run deploy
 ```
-
-## Live Demo
-
-[Mesto Project Live](https://lananolana.github.io/mesto-project-ff/)
