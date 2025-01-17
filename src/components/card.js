@@ -1,4 +1,5 @@
 import { changeLikeStatus } from "./api";
+import { placesWrap } from "./utils/constants";
 
 export const handleDeleteCardClick = (cardElement) => {
     cardElement.remove();
@@ -11,9 +12,7 @@ export const handleLikeIcon = (cardID, likeButton, likesCount) => {
             likeButton.classList.toggle('card__like-button_is-active');
             likesCount.textContent = cardData.likes.length;
         })
-        .catch((err) => {
-            console.log(`Ошибка изменения статуса лайка: ${err}`);
-        })
+        .catch(console.error);
 }
 
 const getTemplate = () => {
@@ -23,7 +22,7 @@ const getTemplate = () => {
         .cloneNode(true);
 };
 
-export const createCardElement = (
+const createCardElement = (
     data,
     { onPreviewImage, onLikeIcon, onDelete },
     userId
@@ -61,4 +60,9 @@ export const createCardElement = (
     }
 
     return cardElement;
+}
+
+export const renderCard = (item, callbacks, userId, method='prepend') => {
+    const cardElement = createCardElement(item, callbacks, userId);
+    placesWrap[ method ](cardElement);
 }

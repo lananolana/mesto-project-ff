@@ -1,17 +1,12 @@
 .popup__input {
   width: 100%;
-  height: 47px;
+  min-height: 30px;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   font-size: 14px;
   line-height: 18px;
   box-sizing: border-box;
-  padding: 10px 0 0;
-  margin-bottom: 10px;
-}
-
-.popup__input:last-of-type {
-  margin-bottom: 0;
+  padding-bottom: 8px;
 }
 
 .popup__input-type-error {
@@ -23,6 +18,7 @@
   color: #FF0000;
   font-weight: 400;
   line-height: 14px;
+  min-height: 30px;
   display: block;
   margin-block-start: 5px;
   opacity: 0;

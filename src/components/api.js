@@ -10,61 +10,65 @@ const checkResponse = (res) => {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 };
 
+const request = (endpoint, options) => {
+    return fetch(config.baseUrl + endpoint, options).then(checkResponse);
+}
+
 export const getInitialCards = () => {
-    return fetch(`${config.baseUrl}/cards`, {
-        headers: config.headers,
-    }).then(checkResponse);
+    return request('/cards', {
+        headers: config.headers
+    })
 };
 
 export const getUserInfo = () => {
-    return fetch(`${config.baseUrl}/users/me`, {
+    return request('/users/me', {
         method: 'GET',
         headers: config.headers,
-    }).then(checkResponse);
+    })
 };
 
 export const addNewCard = ({ name, link }) => {
-    return fetch(`${config.baseUrl}/cards`, {
+    return request('/cards', {
         method: 'POST',
         headers: config.headers,
         body: JSON.stringify({
             name,
             link,
         }),
-    }).then(checkResponse);
+    })
 };
 
 export const setUserInfo = ({ name, about }) => {
-    return fetch(`${config.baseUrl}/users/me`, {
+    return request('/users/me', {
         method: 'PATCH',
         headers: config.headers,
         body: JSON.stringify({
             name,
             about,
         }),
-    }).then(checkResponse);
+    })
 };
 
 export const removeCard = (cardID) => {
-    return fetch(`${config.baseUrl}/cards/${cardID}`, {
+    return request(`/cards/${cardID}`, {
         method: 'DELETE',
         headers: config.headers,
-    }).then(checkResponse);
+    })
 };
 
 export const setUserAvatar = ({ avatar }) => {
-    return fetch(`${config.baseUrl}/users/me/avatar`, {
+    return request('/users/me/avatar', {
         method: 'PATCH',
         headers: config.headers,
         body: JSON.stringify({
             avatar,
         }),
-    }).then(checkResponse);
+    })
 };
 
 export const changeLikeStatus = (cardID, like) => {
-    return fetch(`${config.baseUrl}/cards/likes/${cardID}`, {
+    return request(`/cards/likes/${cardID}`, {
         method: like ? 'PUT' : 'DELETE',
         headers: config.headers,
-    }).then(checkResponse);
+    })
 };
